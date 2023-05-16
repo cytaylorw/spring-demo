@@ -1,4 +1,4 @@
-package io.github.cytaylorw.springapidemo;
+package io.github.cytaylorw.springdemo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

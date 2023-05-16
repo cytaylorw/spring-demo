@@ -1,4 +1,4 @@
-package io.github.cytaylorw.springdemoapi;
+package io.github.cytaylorw.springdemo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

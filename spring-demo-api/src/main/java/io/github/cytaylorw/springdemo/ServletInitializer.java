@@ -1,4 +1,4 @@
-package io.github.cytaylorw.springdemoapi;
+package io.github.cytaylorw.springdemo;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

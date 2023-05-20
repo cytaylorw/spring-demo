@@ -16,6 +16,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import io.github.cytaylorw.springdemo.common.config.persistence.AbstractEncodedPersistenceConfiguration;
+import io.github.cytaylorw.springdemo.common.repository.BaseRepositoryImpl;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -26,9 +27,13 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Configuration
-@ConditionalOnProperty(prefix = "spring.datasource.demo", name = "enable", havingValue = "true", matchIfMissing = true)
-@EnableJpaRepositories(basePackages = DemoPersistenceConfiguration.REPOSITORY_PACKAGE, entityManagerFactoryRef = DemoPersistenceConfiguration.NAME
-		+ "EntityManager", transactionManagerRef = DemoPersistenceConfiguration.NAME + "TransactionManager")
+@ConditionalOnProperty( //
+		prefix = "spring.datasource.demo", name = "enable", havingValue = "true", matchIfMissing = true)
+@EnableJpaRepositories( //
+		repositoryBaseClass = BaseRepositoryImpl.class, //
+		basePackages = DemoPersistenceConfiguration.REPOSITORY_PACKAGE, //
+		entityManagerFactoryRef = DemoPersistenceConfiguration.NAME + "EntityManager", //
+		transactionManagerRef = DemoPersistenceConfiguration.NAME + "TransactionManager")
 public class DemoPersistenceConfiguration extends AbstractEncodedPersistenceConfiguration {
 
 	/**

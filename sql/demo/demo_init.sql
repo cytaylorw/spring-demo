@@ -1,5 +1,5 @@
 /*
-*  Initial version of database schema
+*  Initialize demo database for MSSQL
 *    - Create demo DB
 *    - Create demo schema
 *

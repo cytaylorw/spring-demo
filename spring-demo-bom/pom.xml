@@ -23,6 +23,8 @@
 		<spring.demo.api.version>0.0.1</spring.demo.api.version>
 		<java-utils.version>main-SNAPSHOT</java-utils.version>
 		<java.version>17</java.version>
+	    <mapstruct.version>1.5.3.Final</mapstruct.version>
+		<jjwt.version>0.11.5</jjwt.version>
 	</properties>
 	<repositories>
 		<repository>

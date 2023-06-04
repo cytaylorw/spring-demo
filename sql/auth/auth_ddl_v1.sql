@@ -23,11 +23,11 @@ CREATE TABLE IF NOT EXISTS auth.users (
 -- Comment auth.users
 comment on table auth.users is 'User account information';
 
-comment on column auth.users.user_id is 'The user ID';
-comment on column auth.users.user_username is 'The user username';
-comment on column auth.users.user_first_name is 'The user first name';
-comment on column auth.users.user_last_name is 'The user username';
-comment on column auth.users.user_email is 'The user email';
+comment on column auth.users.user_id is 'ID of the user';
+comment on column auth.users.user_username is 'username of the user';
+comment on column auth.users.user_first_name is 'first name of the user';
+comment on column auth.users.user_last_name is 'last name of the user';
+comment on column auth.users.user_email is 'email of the user';
 comment on column auth.users.created_by is 'The record created by this user';
 comment on column auth.users.created_at is 'The record creation date';
 comment on column auth.users.updated_by is 'The record last updated by this user';

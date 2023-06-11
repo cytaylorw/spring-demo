@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -33,6 +35,8 @@ public class DemoUser extends Auditable {
     /**
      * username of the user
      */
+    @Size(max = 100)
+    @NotNull
     @Column(name = "user_username", unique = true)
     private String username;
 
@@ -51,6 +55,8 @@ public class DemoUser extends Auditable {
     /**
      * email of the user
      */
+    @Size(max = 100)
+    @NotNull
     @Column(name = "user_email", unique = true)
     private String email;
 }

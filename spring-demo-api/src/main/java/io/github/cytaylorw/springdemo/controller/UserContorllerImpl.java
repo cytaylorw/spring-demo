@@ -3,12 +3,11 @@ package io.github.cytaylorw.springdemo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.github.cytaylorw.springdemo.core.response.ResponseBody;
+import io.github.cytaylorw.springdemo.core.response.ApiResponseEntity;
 import io.github.cytaylorw.springdemo.core.response.ResponseMessage;
 import io.github.cytaylorw.springdemo.service.UserService;
 
@@ -26,8 +25,8 @@ public class UserContorllerImpl implements UserContorller {
     private UserService userService;
 
     @Override
-    @GetMapping(path = "")
-    public ResponseEntity<ResponseBody<List<Object>>> getUsers() {
+    @GetMapping
+    public ApiResponseEntity<List<Object>> findUsers() {
         return ResponseMessage.DEFAULT_QUERY_SUCCESS.toApiResponseEntity(List.of());
     }
 

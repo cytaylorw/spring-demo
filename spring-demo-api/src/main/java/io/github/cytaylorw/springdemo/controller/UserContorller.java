@@ -2,9 +2,7 @@ package io.github.cytaylorw.springdemo.controller;
 
 import java.util.List;
 
-import org.springframework.http.ResponseEntity;
-
-import io.github.cytaylorw.springdemo.core.response.ResponseBody;
+import io.github.cytaylorw.springdemo.core.response.ApiResponseEntity;
 
 /**
  * User controller interface
@@ -20,6 +18,6 @@ public interface UserContorller {
      * 
      * @return
      */
-    ResponseEntity<ResponseBody<List<Object>>> getUsers();
+    ApiResponseEntity<List<Object>> findUsers();
 
 }

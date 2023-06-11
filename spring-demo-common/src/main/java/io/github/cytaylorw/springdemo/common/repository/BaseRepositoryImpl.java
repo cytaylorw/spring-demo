@@ -100,4 +100,42 @@ public class BaseRepositoryImpl<T, ID> extends SimpleJpaRepository<T, ID> implem
         return this.findAll(spec, sort).stream().map(mapper).collect(Collectors.toList());
     }
 
+    @Override
+    public List<T> findAll(SpecificationProvider<T> specProvider) {
+        Objects.requireNonNull(specProvider);
+        return this.findAll(specProvider.toSpecification());
+    }
+
+    @Override
+    public <U> List<U> findAll(SpecificationProvider<T> specProvider, Function<? super T, ? extends U> mapper) {
+        Objects.requireNonNull(specProvider);
+        return this.findAll(specProvider.toSpecification(), mapper);
+    }
+
+    @Override
+    public Page<T> findAll(SpecificationProvider<T> specProvider, Pageable pageable) {
+        Objects.requireNonNull(specProvider);
+        return this.findAll(specProvider.toSpecification(), pageable);
+    }
+
+    @Override
+    public <U> Page<U> findAll(SpecificationProvider<T> specProvider, Pageable pageable,
+            Function<? super T, ? extends U> mapper) {
+        Objects.requireNonNull(specProvider);
+        return this.findAll(specProvider.toSpecification(), pageable, mapper);
+    }
+
+    @Override
+    public List<T> findAll(SpecificationProvider<T> specProvider, Sort sort) {
+        Objects.requireNonNull(specProvider);
+        return this.findAll(specProvider.toSpecification(), sort);
+    }
+
+    @Override
+    public <U> List<U> findAll(SpecificationProvider<T> specProvider, Sort sort,
+            Function<? super T, ? extends U> mapper) {
+        Objects.requireNonNull(specProvider);
+        return this.findAll(specProvider.toSpecification(), sort, mapper);
+    }
+
 }

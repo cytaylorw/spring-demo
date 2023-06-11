@@ -9,6 +9,7 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.core.convert.ConversionFailedException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -167,6 +168,19 @@ public class ApiExceptionHandler {
 		logError(ex);
         return ResponseMessage.DEFAULT_BAD_REQUEST_ERROR.toApiResponseEntity();
 	}
+
+    /**
+     * HttpMessageNotReadableException Handler
+     *
+     * @param ex
+     * @return
+     */
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ApiResponseEntity<String> handleHttpMessageNotReadable(HttpMessageNotReadableException ex) {
+        logError(ex);
+        return ResponseMessage.DEFAULT_BAD_REQUEST_ERROR.toApiResponseEntity(ex.getMessage());
+    }
 
 	/**
 	 * Log Exception message

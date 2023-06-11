@@ -13,11 +13,11 @@ CREATE TABLE IF NOT EXISTS auth.users (
   user_username varchar(50) NOT NULL UNIQUE,
   user_first_name text,
   user_last_name text,
-  user_email varchar(50) NOT NULL UNIQUE,
+  user_email varchar(100) NOT NULL UNIQUE,
   created_by varchar(50) NOT NULL,
   created_at timestamp NOT NULL,
-  updated_by varchar(50),
-  updated_at timestamp
+  updated_by varchar(50) NOT NULL,
+  updated_at timestamp NOT NULL
 );
 
 -- Comment auth.users

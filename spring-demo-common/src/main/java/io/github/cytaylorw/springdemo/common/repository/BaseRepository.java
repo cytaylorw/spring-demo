@@ -122,4 +122,74 @@ public interface BaseRepository<T, ID> extends JpaRepositoryImplementation<T, ID
      * @return
      */
     <U> List<U> findAll(@Nullable Specification<T> spec, Sort sort, Function<? super T, ? extends U> mapper);
+
+    /**
+     * Returns the results of all entities matching the given {@link Specification}
+     * from {@link SpecificationProvider}
+     * 
+     * @param <U>          The return type of the mapping function
+     * @param specProvider must not be null
+     * @return
+     */
+    List<T> findAll(SpecificationProvider<T> specProvider);
+
+    /**
+     * Returns the results of applying the given mapping function to all entities
+     * matching the given {@link Specification} from {@link SpecificationProvider}
+     * 
+     * @param <U>          The return type of the mapping function
+     * @param specProvider must not be null
+     * @param mapper       function to apply to each entity
+     * @return
+     */
+    <U> List<U> findAll(SpecificationProvider<T> specProvider, Function<? super T, ? extends U> mapper);
+
+    /**
+     * Returns a Page of results of all entities matching the given
+     * {@link Specification} from {@link SpecificationProvider}
+     * 
+     * @param <U>          The return type of the mapping function
+     * @param specProvider must not be null
+     * @param pageable     must not be null
+     * @return
+     */
+    Page<T> findAll(SpecificationProvider<T> specProvider, Pageable pageable);
+
+    /**
+     * Returns a Page of results of applying the given mapping function to all
+     * entities matching the given {@link Specification} from
+     * {@link SpecificationProvider}
+     * 
+     * @param <U>          The return type of the mapping function
+     * @param specProvider must not be null
+     * @param pageable     must not be null
+     * @param mapper       function to apply to the page
+     * @return
+     */
+    <U> Page<U> findAll(SpecificationProvider<T> specProvider, Pageable pageable,
+            Function<? super T, ? extends U> mapper);
+
+    /**
+     * Returns the results of all entities matching the given {@link Specification}
+     * from {@link SpecificationProvider} and sorted by the given option
+     * 
+     * @param <U>  The return type of the mapping function
+     * @param spec must not be null
+     * @param sort must not be null
+     * @return
+     */
+    List<T> findAll(SpecificationProvider<T> specProvider, Sort sort);
+
+    /**
+     * Returns the results of applying the given mapping function to all entities
+     * matching the given {@link Specification} from {@link SpecificationProvider}
+     * and sorted by the given option
+     * 
+     * @param <U>    The return type of the mapping function
+     * @param spec   must not be null
+     * @param sort   must not be null
+     * @param mapper function to apply to each entity
+     * @return
+     */
+    <U> List<U> findAll(SpecificationProvider<T> specProvider, Sort sort, Function<? super T, ? extends U> mapper);
 }

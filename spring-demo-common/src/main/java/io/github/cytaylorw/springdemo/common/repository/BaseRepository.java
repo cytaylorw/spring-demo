@@ -13,7 +13,7 @@ import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.lang.Nullable;
 
 /**
- * Custom base repository interface.
+ * Custom interface of JpaRepository with additional common methods.
  * 
  * @author Taylor Wong
  *

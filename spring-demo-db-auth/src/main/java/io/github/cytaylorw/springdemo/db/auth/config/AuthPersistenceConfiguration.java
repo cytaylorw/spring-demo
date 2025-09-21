@@ -43,7 +43,7 @@ public class AuthPersistenceConfiguration extends AbstractEncodedPersistenceConf
 	/**
 	 * application property prefix
 	 */
-	private static final String PROPERTY_PREFIX = "spring.datasource." + NAME;
+    protected static final String PROPERTY_PREFIX = "spring.datasource." + NAME;
 
 	/**
 	 * Repository package.

@@ -16,7 +16,7 @@ import io.github.cytaylorw.springdemo.core.exception.ApiRuntimeException;
  *
  * @param <D> the data type of {@link ResponseBody}
  */
-public class ApiResponseEntity<D> extends ResponseEntity<ResponseBody<D>> {
+public class ApiResponseEntity<D extends Object> extends ResponseEntity<ResponseBody<D>> {
 
     /**
      * Create a {@code ApiResponseEntity} with a status code only.

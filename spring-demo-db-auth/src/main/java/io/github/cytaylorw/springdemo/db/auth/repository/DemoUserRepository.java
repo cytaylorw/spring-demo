@@ -10,7 +10,7 @@ import io.github.cytaylorw.springdemo.db.auth.entity.DemoUser;
 /**
  * User Repository
  * 
- * @author Taylor
+ * @author Taylor Wong
  *
  */
 @Repository

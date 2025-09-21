@@ -28,7 +28,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Configuration
 @ConditionalOnProperty( //
-		prefix = "spring.datasource.demo", name = "enable", havingValue = "true", matchIfMissing = true)
+        prefix = DemoPersistenceConfiguration.PROPERTY_PREFIX, name = "enable", havingValue = "true", matchIfMissing = true)
 @EnableJpaRepositories( //
 		repositoryBaseClass = BaseRepositoryImpl.class, //
 		basePackages = DemoPersistenceConfiguration.REPOSITORY_PACKAGE, //
@@ -44,7 +44,7 @@ public class DemoPersistenceConfiguration extends AbstractEncodedPersistenceConf
 	/**
 	 * application property prefix
 	 */
-	private static final String PROPERTY_PREFIX = "spring.datasource." + NAME;
+    protected static final String PROPERTY_PREFIX = "spring.datasource." + NAME;
 
 	/**
 	 * Repository package.

@@ -12,9 +12,9 @@ import org.springframework.data.jpa.domain.Specification;
 public interface SpecificationProvider<E> {
 
     /**
-     * Return a specification for the entity
+     * Return specification for the entity
      * 
-     * @return a specification for the entity
+     * @return specification for the entity
      */
     Specification<E> toSpecification();
 }

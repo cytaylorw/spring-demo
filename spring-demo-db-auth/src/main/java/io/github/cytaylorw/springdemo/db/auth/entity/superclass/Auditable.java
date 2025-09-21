@@ -1,6 +1,9 @@
-package io.github.cytaylorw.springdemo.db.auth.entity;
+package io.github.cytaylorw.springdemo.db.auth.entity.superclass;
 
 import java.time.LocalDateTime;
+
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
@@ -25,12 +28,14 @@ public class Auditable extends CreatedAuditable {
      */
     @Size(max = 100)
     @NotNull
+    @LastModifiedBy
     @Column(name = "updated_by", nullable = false)
     private String updatedBy;
 
     /**
      * Updated at the time
      */
+    @LastModifiedDate
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 

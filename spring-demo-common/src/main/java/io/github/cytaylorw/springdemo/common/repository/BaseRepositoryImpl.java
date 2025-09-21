@@ -13,19 +13,23 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.support.JpaEntityInformation;
 import org.springframework.data.jpa.repository.support.JpaEntityInformationSupport;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 import jakarta.persistence.EntityManager;
 
 /**
+ * Custom implementation of JpaRepository with additional common methods.
+ * 
  * @author Taylor Wong
  *
  * @param <T>  the type of the entity to handle
  * @param <ID> the type of the entity's identifier
  */
+@Transactional(readOnly = true)
 public class BaseRepositoryImpl<T, ID> extends SimpleJpaRepository<T, ID> implements BaseRepository<T, ID> {
 
     /**
-     * Creates a new {@link DemoBaseRepository} to manage objects of the given
+     * Creates a new {@link BaseRepositoryImpl} to manage objects of the given
      * {@link JpaEntityInformation}.
      *
      * @param entityInformation must not be {@literal null}.
@@ -36,7 +40,7 @@ public class BaseRepositoryImpl<T, ID> extends SimpleJpaRepository<T, ID> implem
     }
 
     /**
-     * Creates a new {@link DemoBaseRepository} to manage objects of the given
+     * Creates a new {@link BaseRepositoryImpl} to manage objects of the given
      * domain type.
      *
      * @param domainClass must not be {@literal null}.

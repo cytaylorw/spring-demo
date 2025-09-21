@@ -1,6 +1,9 @@
-package io.github.cytaylorw.springdemo.db.auth.entity;
+package io.github.cytaylorw.springdemo.db.auth.entity.superclass;
 
 import java.time.LocalDateTime;
+
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
@@ -25,12 +28,14 @@ public class CreatedAuditable {
      */
     @Size(max = 100)
     @NotNull
+    @CreatedBy
     @Column(name = "created_by", nullable = false, updatable = false)
     private String createdBy;
 
     /**
      * Created at the time
      */
+    @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 

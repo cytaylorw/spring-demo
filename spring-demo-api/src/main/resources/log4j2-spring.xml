@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<Configuration>
+    <Properties>
+        <Property name="pattern">
+        	%d{ISO8601} %-5level [%15.15t]:[%32X{REQUEST_ID}]%50.50style{(%F:%L)}:%msg%n%throwable
+        </Property>
+        <Property name="log.path">${spring:logging.file.path:-./logs}</Property>
+        <Property name="log.file">${spring:spring.application.name:-app}</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${pattern}"/>
+        </Console>
+
+        <RollingFile name="RollingFile"
+                     fileName="${log.path}/${log.file}.log"
+                     filePattern="${log.path}/$${date:yyyy-MM}/${log.file}-%d{-dd-MMMM-yyyy}-%i.log.gz">
+            <PatternLayout pattern="${pattern}"/>
+            <Policies>
+                <!-- rollover on startup, daily and when the file reaches 10 MegaBytes -->
+                <OnStartupTriggeringPolicy/>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <!-- LOG everything at INFO level -->
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </Root>
+
+        <!-- LOG "ai.systalk.pjm*" at TRACE level -->
+        <Logger name="ai.systalk.pjm" level="DEBUG"></Logger>
+        <SpringProfile name="dev">
+            <Logger name="org.hibernate.SQL" level="DEBUG"/>
+            <Logger name="org.hibernate.type" level="TRACE"/>
+        </SpringProfile>
+
+        <SpringProfile name="prod">
+            <Logger name="ai.systalk.pjm" level="ERROR"></Logger>
+        </SpringProfile>
+    </Loggers>
+
+</Configuration>

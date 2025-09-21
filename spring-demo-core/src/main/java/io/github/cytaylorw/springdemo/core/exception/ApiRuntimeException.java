@@ -94,7 +94,7 @@ public class ApiRuntimeException extends RuntimeException {
      * 
      * @param response
      */
-    public <D> ApiRuntimeException(ApiResponseEntity<D> response) {
+    public ApiRuntimeException(ApiResponseEntity<?> response) {
         super(response.getBody().getMessage());
         this.response = response;
     }
@@ -105,7 +105,7 @@ public class ApiRuntimeException extends RuntimeException {
      * @param response
      * @param cause
      */
-    public <D> ApiRuntimeException(ApiResponseEntity<D> response, Throwable cause) {
+    public ApiRuntimeException(ApiResponseEntity<?> response, Throwable cause) {
         super(response.getBody().getMessage(), cause);
         this.response = response;
     }
